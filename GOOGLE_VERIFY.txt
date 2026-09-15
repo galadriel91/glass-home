@@ -1,0 +1,7 @@
+Google Search Console 소유확인 태그 적용 완료
+
+meta name="google-site-verification"
+content="6WiRKLTVdyFwOEGFT8BtLwE6AOrKgKSAwk2Q61BcerU"
+
+GitHub glass-home 저장소의 index.html을 이 버전으로 덮어쓴 뒤,
+Vercel 자동 배포가 끝나면 Google Search Console에서 '확인'을 누르세요.
