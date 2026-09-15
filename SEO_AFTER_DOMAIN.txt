@@ -1,0 +1,38 @@
+제일유리 최종 SEO 적용 메모
+=========================
+
+최종 도메인이 확정되면 아래 값을 실제 도메인으로 넣습니다.
+
+1. index.html <head>
+<link rel="canonical" href="https://최종도메인/">
+
+<meta property="og:title" content="제일유리">
+<meta property="og:description" content="경남 진주시 평거동 제일유리. 유리·샷시 시공과 방충망 교체·보수, 현장 실측 및 상담.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://최종도메인/">
+<meta property="og:image" content="https://최종도메인/assets/og-jeilglass.jpg">
+
+2. LocalBusiness JSON-LD
+- "url": "https://최종도메인/"
+- 필요 시 image URL 추가
+
+3. robots.txt
+User-agent: *
+Allow: /
+Sitemap: https://최종도메인/sitemap.xml
+
+4. sitemap.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://최종도메인/</loc>
+  </url>
+</urlset>
+
+5. 검색엔진 등록
+- Google Search Console
+- 네이버 서치어드바이저
+
+참고:
+최종 도메인이 정해지기 전에는 canonical, og:url, sitemap의 URL을 임시 vercel.app 주소로 고정하지 않습니다.
