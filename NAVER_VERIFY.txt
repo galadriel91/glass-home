@@ -1,0 +1,7 @@
+네이버 서치어드바이저 소유확인 태그 적용 완료
+
+meta name="naver-site-verification"
+content="468511c0d70bebbdf95c81c2f999ac76126f58f0"
+
+GitHub glass-home 저장소의 index.html을 이 버전으로 덮어쓴 뒤,
+Vercel 배포가 완료되면 네이버 서치어드바이저에서 소유확인 버튼을 누르세요.
