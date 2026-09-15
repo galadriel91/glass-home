@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://jeilglass.vercel.app/sitemap.xml

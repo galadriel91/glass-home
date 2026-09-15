@@ -1,0 +1,31 @@
+제일유리 SEO 적용 상태
+====================
+
+현재 공식 URL
+https://jeilglass.vercel.app/
+
+적용 완료
+- canonical
+- Open Graph
+- 1200x630 Open Graph 대표 이미지
+- Twitter summary_large_image 메타
+- LocalBusiness JSON-LD url/@id
+- 네이버 업체정보 sameAs
+- robots.txt
+- sitemap.xml
+
+검색엔진 등록 후 사용할 Sitemap URL
+https://jeilglass.vercel.app/sitemap.xml
+
+robots.txt
+https://jeilglass.vercel.app/robots.txt
+
+주의
+추후 jeilglass.kr 같은 독립 도메인을 연결하면 아래 URL들을 새 도메인으로 교체해야 합니다.
+- canonical
+- og:url
+- og:image
+- twitter:image
+- LocalBusiness @id / url
+- robots.txt Sitemap
+- sitemap.xml loc
