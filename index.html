@@ -174,7 +174,11 @@ button{font:inherit}
 .footer-grid{display:grid;grid-template-columns:140px 1fr auto;align-items:center;gap:28px}
 .footer-brand strong{display:block;font-size:23px;letter-spacing:-1px}
 .footer-brand span{display:block;margin-top:7px;font-size:9px;letter-spacing:3.2px;color:#204e77;font-weight:800}
-.footer-info{font-size:11px;color:#667e94;line-height:1.8}
+.footer-info{display:flex;flex-wrap:wrap;align-items:center;font-size:11px;color:#667e94;line-height:1.8}
+.footer-info-item{display:inline-flex;align-items:center;white-space:nowrap}
+.footer-info-item:not(:last-child)::after{content:'|';margin:0 9px;color:#b7c4cf}
+.footer-info-label{margin-right:4px;color:#7b90a3}
+.footer-info-value{font-weight:500;color:#667e94}
 .footer-tag{font-size:11px;color:#6e8498;display:flex;align-items:center;gap:14px}
 .footer-tag::before{content:'';display:block;width:54px;height:1px;background:#91a8bc}
 
@@ -223,7 +227,35 @@ button{font:inherit}
   .contact-row .small-btn{grid-column:auto;margin-top:0;justify-self:end;min-width:100px;padding:10px 14px}
   .contact-row .address{line-height:1.5}
   .mobile-br{display:block}
-  .footer-grid{gap:16px}
+  .footer-grid{gap:18px}
+  .footer-info{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px 22px;
+    line-height:1.45;
+  }
+  .footer-info-item{
+    display:block;
+    min-width:0;
+    white-space:normal;
+  }
+  .footer-info-item:not(:last-child)::after{display:none}
+  .footer-info-label{
+    display:block;
+    margin:0 0 3px;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:.04em;
+    color:#8ba0b2;
+  }
+  .footer-info-value,
+  .footer-info-item .footer-phone-link{
+    display:block;
+    font-size:11px;
+    font-weight:700;
+    color:#5f778c;
+  }
+  .footer-info-item.footer-wide{grid-column:1 / -1}
 }
 
 @media(min-width:1200px){
@@ -397,6 +429,73 @@ button{font:inherit}
   transition:right .26s cubic-bezier(.22,.61,.36,1);
 }
 .nav-links a:hover::after{right:0}
+
+
+/* Quick service strip: enters as one calm sequence */
+.quick-card{
+  transition:
+    transform .28s cubic-bezier(.22,.61,.36,1),
+    border-color .28s ease,
+    box-shadow .28s ease,
+    background-color .28s ease;
+}
+.quick-card:hover{
+  transform:translateY(-3px);
+  border-color:#cddfec;
+  box-shadow:0 12px 28px rgba(34,77,115,.07);
+}
+.quick-card .iconbox{
+  transition:
+    transform .28s cubic-bezier(.22,.61,.36,1),
+    background-color .28s ease,
+    border-color .28s ease;
+}
+.quick-card:hover .iconbox{
+  transform:translateY(-1px);
+  background:#e2f0fa;
+  border-color:#bfd9ec;
+}
+
+/* Service photography: keep movement subtle so the imagery stays premium */
+.photo-card{
+  transition:
+    transform .38s cubic-bezier(.22,.61,.36,1),
+    box-shadow .38s ease,
+    filter .38s ease;
+}
+.photo-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 44px rgba(13,55,94,.14);
+  filter:saturate(1.03) contrast(1.01);
+}
+.photo-card .arrow-circle{
+  transition:
+    transform .30s cubic-bezier(.22,.61,.36,1),
+    background-color .30s ease;
+}
+.photo-card:hover .arrow-circle{
+  transform:translateX(3px);
+  background:#fff;
+}
+
+/* Contact details appear in a short, restrained sequence */
+.contact-box.is-visible .contact-row{
+  animation:contactRowIn .62s cubic-bezier(.22,.61,.36,1) both;
+}
+.contact-box.is-visible .contact-row:nth-child(2){animation-delay:.10s}
+.contact-box.is-visible .contact-row:nth-child(3){animation-delay:.20s}
+@keyframes contactRowIn{
+  from{opacity:0;transform:translateY(9px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Keep hover feedback even on the dark contact panel */
+.contact-row{
+  transition:background-color .24s ease;
+}
+.contact-row:hover{
+  background:rgba(255,255,255,.025);
+}
 
 /* Respect OS accessibility setting */
 @media (prefers-reduced-motion: reduce){
@@ -956,15 +1055,15 @@ html{
 
 <header class="hero" id="top">
   <div class="container nav">
-    <a class="brand" href="#top"><strong>제일유리</strong><span>JEIL GLASS</span></a>
+    <a class="brand hero-enter hero-enter-1" href="#top"><strong>제일유리</strong><span>JEIL GLASS</span></a>
     <nav class="nav-links hero-enter hero-enter-1"><a href="#services">Services</a><a href="#process">Process</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
-    <a class="phone-pill" href="tel:01038406350" aria-label="전화걸기">
+    <a class="phone-pill hero-enter hero-enter-2" href="tel:01038406350" aria-label="전화걸기">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v2a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 4.2 2 2 0 0 1 5.1 2h2a2 2 0 0 1 2 1.7l.3 2.4a2 2 0 0 1-.6 1.7L7.3 9.3a16 16 0 0 0 7.4 7.4l1.5-1.5a2 2 0 0 1 1.7-.6l2.4.3A2 2 0 0 1 22 16.9z"/></svg>
       010-3840-6350
     </a>
   </div>
   <div class="container hero-content">
-    <div class="eyebrow">JEIL GLASS · GLASS &amp; SCREEN SOLUTIONS</div>
+    <div class="eyebrow hero-enter hero-enter-2">JEIL GLASS · GLASS &amp; SCREEN SOLUTIONS</div>
     <h1 class="hero-enter hero-enter-3">공간을 바라보는<br>가장 투명한 방법.</h1>
     <p class="hero-copy hero-enter hero-enter-4">경남 진주시 평거동에서 유리·샷시를 중심으로 시공하며,<br>방충망 시공까지 공간에 필요한 작업을 정확하게 제안합니다.</p>
     <a class="primary-btn hero-enter hero-enter-5" href="#contact">상담 문의하기 <span>→</span></a>
@@ -973,11 +1072,11 @@ html{
 </header>
 
 <section class="quickbar">
-  <div class="container quick-grid">
-    <div class="quick-card"><div class="iconbox"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18"/><path d="M12 3v18M5 12h14"/></svg></div><div><h3>유리시공</h3><span>창호 · 상가 · 출입문 · 인테리어 유리</span></div></div>
-    <div class="quick-card"><div class="iconbox"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/><path d="M4 8h16M4 12h16M4 16h16M8 4v16M12 4v16M16 4v16"/></svg></div><div><h3>방충망 시공</h3><span>교체 · 보수 · 미세 방충망</span></div></div>
-    <div class="quick-card"><div class="iconbox"><svg viewBox="0 0 24 24"><path d="M5 20V4h5v11h9v5z"/><path d="M8 7h2M8 10h2M13 17v-2M16 17v-2"/></svg></div><div><h3>현장 실측</h3><span>공간에 맞는 정확한 확인과 안내</span></div></div>
-    <div class="quick-card"><div class="iconbox"><svg viewBox="0 0 24 24"><path d="M4 13v-2a8 8 0 0 1 16 0v2"/><path d="M4 12H2v5h4v-5zM20 12h2v5h-4v-5zM18 19c-1 1-2 1-4 1"/></svg></div><div><h3>빠른 상담</h3><span>전화 문의 및 진행 안내</span></div></div>
+  <div class="container quick-grid reveal-group">
+    <div class="quick-card reveal-card"><div class="iconbox"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18"/><path d="M12 3v18M5 12h14"/></svg></div><div><h3>유리시공</h3><span>창호 · 상가 · 출입문 · 인테리어 유리</span></div></div>
+    <div class="quick-card reveal-card"><div class="iconbox"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/><path d="M4 8h16M4 12h16M4 16h16M8 4v16M12 4v16M16 4v16"/></svg></div><div><h3>방충망 시공</h3><span>교체 · 보수 · 미세 방충망</span></div></div>
+    <div class="quick-card reveal-card"><div class="iconbox"><svg viewBox="0 0 24 24"><path d="M5 20V4h5v11h9v5z"/><path d="M8 7h2M8 10h2M13 17v-2M16 17v-2"/></svg></div><div><h3>현장 실측</h3><span>공간에 맞는 정확한 확인과 안내</span></div></div>
+    <div class="quick-card reveal-card"><div class="iconbox"><svg viewBox="0 0 24 24"><path d="M4 13v-2a8 8 0 0 1 16 0v2"/><path d="M4 12H2v5h4v-5zM20 12h2v5h-4v-5zM18 19c-1 1-2 1-4 1"/></svg></div><div><h3>빠른 상담</h3><span>전화 문의 및 진행 안내</span></div></div>
   </div>
 </section>
 
@@ -989,11 +1088,11 @@ html{
       <p class="section-desc">유리, 샷시, 방충망까지.<br>공간의 특성과 용도에 맞는 최적의 솔루션을<br>제일유리가 제안합니다.</p>
       <div class="micro-line"></div><div class="micro-text">BETTER SPACE<br>BRIGHTER TOMORROW</div>
     </div>
-    <div class="service-gallery">
-      <article class="photo-card photo-main"><div class="photo-content"><div class="circle"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/><path d="M8 4v16M12 4v16M16 4v16M4 8h16M4 12h16M4 16h16"/></svg></div><div><h3>유리시공</h3><small>창호 · 상가 · 출입문 · 인테리어 유리</small></div><span class="arrow-circle">→</span></div></article>
+    <div class="service-gallery reveal-group">
+      <article class="photo-card photo-main reveal-card"><div class="photo-content"><div class="circle"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/><path d="M8 4v16M12 4v16M16 4v16M4 8h16M4 12h16M4 16h16"/></svg></div><div><h3>유리시공</h3><small>창호 · 상가 · 출입문 · 인테리어 유리</small></div><span class="arrow-circle">→</span></div></article>
       <div class="service-stack">
-        <article class="photo-card photo-side-top"><div class="photo-content"><div class="circle"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/><path d="M4 8h16M4 12h16M4 16h16M8 4v16M12 4v16M16 4v16"/></svg></div><div><h3>방충망 시공</h3><small>교체 · 보수 · 미세 방충망</small></div><span class="arrow-circle">→</span></div></article>
-        <article class="photo-card photo-side-bottom"><div class="photo-content"><div class="circle"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16"/><path d="M12 4v16M5 10h14"/></svg></div><div><h3>현장 맞춤 시공</h3><small>공간에 맞는 정확한 시공</small></div><span class="arrow-circle">→</span></div></article>
+        <article class="photo-card photo-side-top reveal-card"><div class="photo-content"><div class="circle"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/><path d="M4 8h16M4 12h16M4 16h16M8 4v16M12 4v16M16 4v16"/></svg></div><div><h3>방충망 시공</h3><small>교체 · 보수 · 미세 방충망</small></div><span class="arrow-circle">→</span></div></article>
+        <article class="photo-card photo-side-bottom reveal-card"><div class="photo-content"><div class="circle"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16"/><path d="M12 4v16M5 10h14"/></svg></div><div><h3>현장 맞춤 시공</h3><small>공간에 맞는 정확한 시공</small></div><span class="arrow-circle">→</span></div></article>
       </div>
     </div>
   </div>
@@ -1130,9 +1229,14 @@ html{
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-brand"><strong>제일유리</strong><span>JEIL GLASS</span></div>
-    <div class="footer-info">
-      대표자 : 이동환 &nbsp; | &nbsp; 사업자등록번호 : 613-11-34355 &nbsp; | &nbsp; 업태 : 소매업 · 종목 : 유리, 샷시 &nbsp; | &nbsp; 전화 : <a class="footer-phone-link" href="tel:01038406350">010-3840-6350</a><br>
-      영업시간 : 09:00 ~ 18:00 &nbsp; | &nbsp; 공휴일 휴무 &nbsp; | &nbsp; 시공지역 : 진주 · 사천 · 산청 및 인근 지역
+    <div class="footer-info" aria-label="사업자 및 영업 정보">
+      <div class="footer-info-item"><span class="footer-info-label">대표자</span><span class="footer-info-value">이동환</span></div>
+      <div class="footer-info-item"><span class="footer-info-label">사업자등록번호</span><span class="footer-info-value">613-11-34355</span></div>
+      <div class="footer-info-item"><span class="footer-info-label">업태 · 종목</span><span class="footer-info-value">소매업 · 유리, 샷시</span></div>
+      <div class="footer-info-item"><span class="footer-info-label">전화</span><a class="footer-phone-link footer-info-value" href="tel:01038406350">010-3840-6350</a></div>
+      <div class="footer-info-item"><span class="footer-info-label">영업시간</span><span class="footer-info-value">09:00 ~ 18:00</span></div>
+      <div class="footer-info-item"><span class="footer-info-label">휴무일</span><span class="footer-info-value">공휴일</span></div>
+      <div class="footer-info-item footer-wide"><span class="footer-info-label">시공지역</span><span class="footer-info-value">진주 · 사천 · 산청 및 인근 지역</span></div>
     </div>
     <div class="footer-tag">좋은 공간, 늘 제일유리와 함께</div>
   </div>
